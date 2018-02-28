@@ -1,5 +1,5 @@
 <?php
-namespace Lifeibest\GitDeploy;
+namespace Lifeibest\LaravelGitDeploy;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
