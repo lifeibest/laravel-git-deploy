@@ -11,22 +11,29 @@ class GitDeployServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // $this->registerRoutes();
-        // $this->registerResources();
-        // $this->definePublishing();
-        //
+
+        $this->registerRoutes();
+        $this->registerResources();
+        $this->definePublishing();
+
     }
     /**
-     * Register the Redis manager routes.
+     * Register the   manager routes.
      *
      * @return void
      */
     protected function registerRoutes()
     {
-
+        Route::group([
+            'prefix' => config('git-deploy.base_path', 'git-deploy'),
+            'namespace' => 'Lifeibest\LaravelGitDeploy\Http\Controllers',
+            'middleware' => config('git-deploy.middleware', 'web'),
+        ], function () {
+            $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+        });
     }
     /**
-     * Register the Redis manager resources.
+     * Register the   manager resources.
      *
      * @return void
      */
@@ -41,6 +48,10 @@ class GitDeployServiceProvider extends ServiceProvider
      */
     public function definePublishing()
     {
-
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__ . '/../config/git-deploy.php' => config_path('git-deploy.php'),
+            ], 'git-deploy-config');
+        }
     }
 }
