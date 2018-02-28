@@ -14,6 +14,7 @@ class GitDeployServiceProvider extends ServiceProvider
         // $this->registerRoutes();
         // $this->registerResources();
         // $this->definePublishing();
+        //
     }
     /**
      * Register the Redis manager routes.
