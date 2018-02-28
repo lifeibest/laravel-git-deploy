@@ -1,0 +1,34 @@
+{
+    "name": "lifeibest/laravel-git-deploy",
+    "description": "deploy for Laravel",
+    "keywords": ["deploy","laravel", "git"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "lifeibest",
+            "email": "lifeibest@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "illuminate/contracts": "~5.5",
+        "illuminate/support": "~5.5",
+    },
+    "require-dev": {
+        "laravel/laravel": "5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lifeibest\\LaravelGitDeploy\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lifeibest\\LaravelGitDeploy\\GitDeployServiceProvider"
+            ]
+
+        }
+    }
+
+}
