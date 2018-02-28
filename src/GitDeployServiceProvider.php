@@ -11,9 +11,9 @@ class GitDeployServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->registerRoutes();
-        $this->registerResources();
-        $this->definePublishing();
+        // $this->registerRoutes();
+        // $this->registerResources();
+        // $this->definePublishing();
     }
     /**
      * Register the Redis manager routes.
