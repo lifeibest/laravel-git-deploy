@@ -6,6 +6,14 @@ use Illuminate\Support\ServiceProvider;
 
 class GitDeployServiceProvider extends ServiceProvider
 {
+
+    /**
+     * @var array
+     */
+    protected $commands = [
+        'Lifeibest\LaravelGitDeploy\Console\TaskCommand',
+    ];
+
     /**
      * {@inheritdoc}
      */
@@ -16,7 +24,20 @@ class GitDeployServiceProvider extends ServiceProvider
         $this->registerResources();
         $this->definePublishing();
 
+        //$this->registerCommands();
+
     }
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->commands($this->commands);
+    }
+
     /**
      * Register the   manager routes.
      *
