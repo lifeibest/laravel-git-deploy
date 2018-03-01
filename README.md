@@ -11,7 +11,7 @@ composer require lifeibest/laravel-git-deploy
 
 ```
 
-After installing `laravel-git-deploy`, publish its assets using the vendor:publish Artisan command:
+After installing `laravel-git-deploy`, publish its config using the vendor:publish Artisan command:
 
 ```shell
 php artisan vendor:publish --provider="Lifeibest\LaravelGitDeploy\GitDeployServiceProvider"
