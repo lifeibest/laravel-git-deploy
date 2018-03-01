@@ -26,6 +26,10 @@ class GitDeployServiceProvider extends ServiceProvider
 
         //$this->registerCommands();
 
+        if ($this->app->runningInConsole()) {
+            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        }
+
     }
 
     /**
