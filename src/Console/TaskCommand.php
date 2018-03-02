@@ -3,6 +3,9 @@ namespace Lifeibest\LaravelGitDeploy\Console;
 
 use Illuminate\Console\Command;
 
+/**
+ * php artisan  git-deploy:task
+ */
 class TaskCommand extends Command
 {
     /**
