@@ -7,7 +7,7 @@ laravel git 发布系统
 You may use Composer to install laravel-git-deploy into your Laravel project:
 
 ```shell
-composer require lifeibest/laravel-git-deploy
+composer require lifeibest/laravel-git-deploy:dev-master
 
 ```
 
