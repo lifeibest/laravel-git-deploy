@@ -2,6 +2,7 @@
 namespace Lifeibest\LaravelGitDeploy\Http\Controllers;
 
 use Illuminate\Routing\Controller as BaseController;
+use Lifeibest\LaravelGitDeploy\Service\DeployService as DeployService;
 
 class GitDeployController extends BaseController
 {
@@ -21,4 +22,14 @@ class GitDeployController extends BaseController
         return view('git-deploy::app');
     }
 
+    /**
+     * 钩子
+     * @return [type] [description]
+     */
+    public function hook()
+    {
+        $deployService = new DeployService();
+        $deployService->hook();
+
+    }
 }
