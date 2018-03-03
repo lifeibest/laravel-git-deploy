@@ -29,7 +29,7 @@ class GitDeployServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         }
-
+        Deploy::boot();
     }
 
     /**
@@ -91,5 +91,16 @@ class GitDeployServiceProvider extends ServiceProvider
                 __DIR__ . '/../config/git-deploy.php' => config_path('git-deploy.php'),
             ], 'git-deploy-config');
         }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public static function import()
+    {
+        echo 'ddd';
+        //parent::createMenu('Config', 'config', 'fa-toggle-on');
+
+        //parent::createPermission('Admin Config', 'ext.config', 'config*');
     }
 }

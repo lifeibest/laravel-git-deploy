@@ -20,5 +20,11 @@ php artisan vendor:publish --provider="Lifeibest\LaravelGitDeploy\GitDeployServi
 migrate database
 
 ```shell
-php artisan migrate
+php artisan migrate --path=vendor/lifeibest/laravel-git-deploy/database/migrations
+```
+
+import menu and permission
+
+```shell
+php artisan admin:import deploy
 ```
