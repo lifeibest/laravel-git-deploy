@@ -1,13 +1,12 @@
 <?php
 namespace Lifeibest\LaravelGitDeploy\Admin\Http\Controllers;
 
-use App\Models\Systemconfig;
-use App\Models\SystemconfigType;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Lifeibest\LaravelGitDeploy\Models\GitTaskModel;
 
 class GitTaskController extends Controller
 {
@@ -21,13 +20,13 @@ class GitTaskController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('配置');
-            $content->description('列表');
+            $content->header('Git task');
+            $content->description('list');
 
             // 面包屑导航
             $content->breadcrumb(
-                ['text' => '配置列表', 'url' => '/systemconfig'],
-                ['text' => '配置']
+                ['text' => 'Git task', 'url' => '/git-task'],
+                ['text' => 'detail']
             );
             $content->body($this->grid());
         });
@@ -40,7 +39,7 @@ class GitTaskController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(Systemconfig::class, function (Grid $grid) {
+        return Admin::grid(GitTaskModel::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
 
@@ -49,13 +48,6 @@ class GitTaskController extends Controller
             // $grid->column('systemconfig_type_id', '配置类型')->display(function ($systemconfig_type_id) {
             //     return systemconfigType::find($systemconfig_type_id)->name;
             // });
-
-            $grid->column('systemconfigType.name', '配置类型'); //同上功能
-
-            $grid->name('配置名称');
-            $grid->keyword('标识符');
-            $grid->value1('值');
-            $grid->is_open('开关');
 
             $grid->created_at('创建时间')->sortable();
             $grid->updated_at('更新时间')->sortable();
@@ -78,12 +70,6 @@ class GitTaskController extends Controller
 
             $grid->filter(function ($filter) {
                 $filter->disableIdFilter();
-                $filter->equal('systemconfig_type_id', '配置类型')->select(systemconfigType::all()->pluck('name', 'id'));
-                $filter->like('name', '配置名称');
-                $filter->like('keyword', '关键字');
-                $filter->like('value1', '值1');
-                $filter->like('value2', '值2');
-                $filter->like('value3', '值3');
 
             });
         });
