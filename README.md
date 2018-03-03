@@ -16,3 +16,9 @@ After installing `laravel-git-deploy`, publish its config using the vendor:publi
 ```shell
 php artisan vendor:publish --provider="Lifeibest\LaravelGitDeploy\GitDeployServiceProvider"
 ```
+
+migrate database
+
+```shell
+php artisan migrate
+```

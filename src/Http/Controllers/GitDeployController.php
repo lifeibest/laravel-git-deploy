@@ -24,6 +24,7 @@ class GitDeployController extends BaseController
 
     /**
      * 钩子
+     * url: /git-deploy/hook
      * @return [type] [description]
      */
     public function hook()

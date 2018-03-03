@@ -4,6 +4,7 @@ namespace Lifeibest\LaravelGitDeploy\Admin\Http\Controllers;
 use App\Models\Systemconfig;
 use App\Models\SystemconfigType;
 use Encore\Admin\Facades\Admin;
+use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -28,7 +29,7 @@ class GitTaskController extends Controller
                 ['text' => '配置列表', 'url' => '/systemconfig'],
                 ['text' => '配置']
             );
-            //$content->body($this->grid());
+            $content->body($this->grid());
         });
     }
 
