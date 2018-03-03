@@ -17,6 +17,6 @@ return [
     | The Git Deploys route middleware.
     |
      */
-    'middleware' => ['web'],
+    'middleware' => ['web', 'admin'],
 
 ];

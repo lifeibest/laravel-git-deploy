@@ -52,9 +52,15 @@ class GitDeployServiceProvider extends ServiceProvider
         Route::group([
             'prefix' => 'admin',
             'namespace' => 'Lifeibest\LaravelGitDeploy\Admin\Http\Controllers',
+            'middleware' => config('git-deploy.middleware', ['web', 'admin']),
         ], function () {
             Route::get('/git-task', 'GitTaskController@index');
         });
+
+        // parent::routes(function ($router) {
+        //     /* @var \Illuminate\Routing\Router $router */
+        //     $router->get('git-task', 'Lifeibest\LaravelGitDeploy\Admin\Http\Controllers\GitTaskController@index')->name('git-task');
+        // });
 
         Route::group([
             'prefix' => config('git-deploy.base_path', 'git-deploy'),
