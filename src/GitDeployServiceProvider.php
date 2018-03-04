@@ -1,6 +1,9 @@
 <?php
 namespace Lifeibest\LaravelGitDeploy;
 
+use Encore\Admin\Admin;
+use Encore\Admin\Auth\Database\Menu;
+use Encore\Admin\Auth\Database\Permission;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
@@ -29,7 +32,9 @@ class GitDeployServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
         }
-        Deploy::boot();
+        Admin::extend('deploy', __CLASS__);
+
+        //DeployExtension::boot();
     }
 
     /**
@@ -98,9 +103,38 @@ class GitDeployServiceProvider extends ServiceProvider
      */
     public static function import()
     {
-        echo 'ddd';
-        //parent::createMenu('Config', 'config', 'fa-toggle-on');
-
-        //parent::createPermission('Admin Config', 'ext.config', 'config*');
+        $lastOrder = Menu::max('order');
+        $root = [
+            'parent_id' => 0,
+            'order' => $lastOrder++,
+            'title' => 'Git deploy',
+            'icon' => 'fa-tasks',
+            'uri' => '',
+        ];
+        $root = Menu::create($root);
+        $menus = [
+            [
+                'title' => 'Git task',
+                'icon' => 'fa-tasks',
+                'uri' => 'git-task',
+            ],
+            [
+                'title' => 'Git hock',
+                'icon' => 'fa-terminal',
+                'uri' => 'git-hock',
+            ],
+            [
+                'title' => 'Git config',
+                'icon' => 'fa-wrench',
+                'uri' => 'git-config',
+            ],
+        ];
+        foreach ($menus as $menu) {
+            $menu['parent_id'] = $root->id;
+            $menu['order'] = $lastOrder++;
+            Menu::create($menu);
+        }
+        Permission::createPermission('Git deploy', 'ext.deploy', 'git*');
     }
+
 }

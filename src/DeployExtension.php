@@ -6,7 +6,10 @@ use Encore\Admin\Admin;
 use Encore\Admin\Auth\Database\Menu;
 use Encore\Admin\Extension;
 
-class Deploy extends Extension
+/**
+ * not use
+ */
+class DeployExtension extends Extension
 {
 
     /**
