@@ -45,24 +45,24 @@ class Deploy extends Extension
             'parent_id' => 0,
             'order' => $lastOrder++,
             'title' => 'Git deploy',
-            'icon' => 'fa-gears',
+            'icon' => 'fa-tasks',
             'uri' => '',
         ];
         $root = Menu::create($root);
         $menus = [
             [
                 'title' => 'Git task',
-                'icon' => 'fa-keyboard-o',
+                'icon' => 'fa-tasks',
                 'uri' => 'git-task',
             ],
             [
                 'title' => 'Git hock',
-                'icon' => 'fa-database',
+                'icon' => 'fa-terminal',
                 'uri' => 'git-hock',
             ],
             [
                 'title' => 'Git config',
-                'icon' => 'fa-terminal',
+                'icon' => 'fa-wrench',
                 'uri' => 'git-config',
             ],
         ];
