@@ -134,7 +134,13 @@ class GitDeployServiceProvider extends ServiceProvider
             $menu['order'] = $lastOrder++;
             Menu::create($menu);
         }
-        Permission::createPermission('Git deploy', 'ext.deploy', 'git*');
+
+        Permission::create([
+            'name' => 'Git deploy',
+            'slug' => 'ext.git_deploy',
+            'http_path' => '/' . trim('git*', '/'),
+        ]);
+        //Permission::createPermission('Git deploy', 'ext.deploy', 'git*');
     }
 
 }
